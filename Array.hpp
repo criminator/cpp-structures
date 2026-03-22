@@ -21,6 +21,7 @@ public:
       for (int i = 0; i < size; i++) {
         new_data[i] = data[i]; // copies each element into new data
       }
+      delete[] data;
       data = new_data;
       capacity = new_capacity;
 
