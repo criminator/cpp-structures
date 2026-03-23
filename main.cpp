@@ -1,11 +1,21 @@
 #include "LinkedList.hpp"
-#include "Array.hpp"
+#include "DynamicArray.hpp"
 int main() {
-  std::cout << "Hello\n";
-  Array<int> myarr = Array();
-  myarr->push_back(10);
-  printf("%d", myarr);
-
+  DynamicArray<int> myarr;
+  std::cout << "Size: " << myarr.size() << std::endl;
+  myarr.push_back(10);
+  myarr.push_back(20);
+  myarr.push_back(30);
+  myarr.push_back(40);
+  myarr.push_back(50);
+  std::cout << "Array: [";
+  for (int i = 0; i < myarr.size(); i++) {
+    if (i < myarr.size() - 1) {
+      std::cout << myarr.at(i) << ", ";
+    } else {
+      std::cout << myarr.at(i) << "]\n";
+    }
+  }
 
   return 0;
 }
