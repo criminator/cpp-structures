@@ -1,5 +1,3 @@
-#pragma once
-
 #include <iterator>
 #include <stdexcept>
 template <typename T>
@@ -19,20 +17,15 @@ private:
     capacity_ = new_c;
   }
 public:
+  int* begin() { return data_; } // return beginning address for begin()
+  int* end() { return data_ + size_; } // return address after the last element for end()
+
   DynamicArray() : data_(new T[10]), size_(0), capacity_(10) {}
 
   ~DynamicArray() {
     delete[] data_;
   }
 
-  void push_back(const T& value) { // pass by reference to avoid unnecessary copying
-    if (size_ == capacity_) {
-      // resize
-      resize(capacity_ * 2);
-    }
-    data_[size_] = value;
-    size_++;
-  }
   // rule of 3:
   // Requires deconstructor, so also define:
   // - copy constructor
@@ -60,6 +53,16 @@ public:
     }
 
     return *this;
+  }
+
+  // append element to the end of the array
+  void push_back(const T& value) { // pass by reference to avoid unnecessary copying
+    if (size_ == capacity_) {
+      // resize
+      resize(capacity_ * 2);
+    }
+    data_[size_] = value;
+    size_++;
   }
 
   // Remove last element (pop)
