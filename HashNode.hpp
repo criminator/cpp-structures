@@ -1,7 +1,5 @@
 #pragma once
 
-#include <stdio.h>
-
 template <typename K, typename V>
 struct HashNode {
   K key;
