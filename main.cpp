@@ -17,5 +17,12 @@ int main() {
     }
   }
 
+  size_t sum = 0;
+  for (auto& num : myarr) {
+    sum += num;
+  }
+
+  std::cout << "Sum: " << sum << "\n";
+
   return 0;
 }
