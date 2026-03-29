@@ -1,6 +1,7 @@
 #include "LinkedList.hpp"
 #include "DynamicArray.hpp"
 #include "HashMap.hpp"
+#include "Colors.hpp"
 
 int main() {
   DynamicArray<int> myarr;
@@ -44,6 +45,14 @@ int main() {
 
 
   std::cout << "Sum: " << sum << "\n";
+
+  // Color testing
+  std::cout << "COLORS:\n Red:\t\t" << Colors::red("Test\n");
+  std::cout << " Green:\t\t" << Colors::green("Test\n");
+  std::cout << " Yellow:\t" << Colors::yellow("Test\n");
+  std::cout << " Blue:\t\t" << Colors::blue("Test\n");
+  std::cout << " Magenta:\t" << Colors::magenta("Test\n");
+  std::cout << " Cyan:\t\t" << Colors::cyan("Test\n");
 
   return 0;
 }
