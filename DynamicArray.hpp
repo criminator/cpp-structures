@@ -21,6 +21,8 @@ public:
 
   DynamicArray() : data_(new T[10]), size_(0), capacity_(10) {}
 
+  DynamicArray(size_t cap) : data_(new T[cap]), size_(0), capacity_(cap) {}
+
   ~DynamicArray() {
     delete[] data_;
   }

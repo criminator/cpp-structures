@@ -1,44 +1,44 @@
 #pragma once
 
+#include <cstddef>
+#include <functional>
 #include "HashNode.hpp"
+#include "LinkedList.hpp"
 
 template<typename K, typename V>
 class HashMap {
+  // HashMap
+  // will contain a list of LinkedList objects
+  // I will use DynamicArray as the array implementation and LinkedList for the linked list
+  // Let's just start with 10 buckets
 private:
-  HashNode<K, V>* head;
-  size_t size_;
+  DynamicArray<LinkedList<HashNode<K, V>>> buckets;
+  size_t numBuckets;
 
 public:
-  HashMap() : head(nullptr), size_(0) {}
+  HashMap(size_t initialBuckets = 10) : buckets(initialBuckets), numBuckets(initialBuckets) {}
 
-  // put a value at the end of the list
-  void put(const K& key, const V& val) {
-    if (size_ == 0) {
-      head = new HashNode<K, V>(key, val);
-      size_++;
-      return;
-    }
-    HashNode<K, V>* curr = head;
-    while (curr) {
-      if (curr->key == key) {
-        curr->value = val;
+  void insert(const K& key, const V& value) {
+    size_t index = hash(key) % numBuckets;
+    LinkedList<HashNode<K, V>>& bucket = buckets[index];
+
+    for (auto& node : bucket) {
+      if (node.key == key) {
+        node.value = value;
         return;
       }
-      curr = curr->next;
     }
-    HashNode<K, V>* newNode = new HashNode<K, V>(key, val);
-    newNode->next = head;
-    size_++;
-    head = newNode;
+
+    bucket.push_back(HashNode<K, V>(key, value));
+
   }
 
-  // return the value at the key
-  V* get(const K& k) {
-    HashNode<K, V>* curr = head;
-    while (curr != nullptr) {
-      if (curr->key == k) return &curr->value;
-      curr = curr->next;
-    }
-    return nullptr;
+  // how is this possible for a generic K?
+  // here we use std::hash<K> to generate a hash function
+  // the limitation of this is that it only works if
+  // a specialization exists for type K.
+  size_t hash(const K& key) const { // implement hash function
+    return std::hash<K>{}(key); // returns hash function for builtin types
   }
+
 };
