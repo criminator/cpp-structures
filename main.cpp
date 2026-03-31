@@ -22,15 +22,18 @@ int main() {
 
 void testColors() {
   // Color testing
+  std::cout << Colors::green("--------------COLOR TESTING--------------\n");
   std::cout << "COLORS:\n Red:\t\t" << Colors::red("Test\n");
   std::cout << " Green:\t\t" << Colors::green("Test\n");
   std::cout << " Yellow:\t" << Colors::yellow("Test\n");
   std::cout << " Blue:\t\t" << Colors::blue("Test\n");
   std::cout << " Magenta:\t" << Colors::magenta("Test\n");
   std::cout << " Cyan:\t\t" << Colors::cyan("Test\n");
+  std::cout << Colors::green("-----------------------------------------\n");
 }
 
 void testDynamicArray() {
+  std::cout << Colors::yellow("--------------DYNAMIC ARRAY TESTING--------------\n");
   DynamicArray<int> myarr;
   std::cout << "Size: " << myarr.size() << std::endl;
   myarr.push_back(10);
@@ -46,9 +49,11 @@ void testDynamicArray() {
       std::cout << myarr.at(i) << "]\n";
     }
   }
+  std::cout << Colors::yellow("-------------------------------------------------\n");
 }
 
 void testLinkedList() {
+  std::cout << Colors::blue("--------------LINKED LIST TESTING--------------\n");
   LinkedList<int> mylist = LinkedList<int>();
   mylist.push_back(10);
   mylist.push_back(20);
@@ -58,6 +63,7 @@ void testLinkedList() {
   std::cout << "Remove element at index 1 of ll (20)\n";
   mylist.remove(1);
   mylist.print();
+  std::cout << Colors::blue("-----------------------------------------------\n");
 }
 
 
