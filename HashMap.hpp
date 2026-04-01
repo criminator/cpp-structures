@@ -11,17 +11,17 @@ class HashMap {
   // HashMap
   // will contain a list of LinkedList objects
   // I will use DynamicArray as the array implementation and LinkedList for the linked list
-  // Let's just start with 10 buckets
+  // Let's just start with 10 buckets_
 private:
-  DynamicArray<LinkedList<HashNode<K, V>>> buckets;
-  size_t numBuckets;
+  DynamicArray<LinkedList<HashNode<K, V>>> buckets_;
+  size_t numBuckets_;
 
 public:
-  HashMap(size_t initialBuckets = 10) : buckets(initialBuckets), numBuckets(initialBuckets) {}
+  HashMap(size_t initialbuckets_ = 10) : buckets_(initialbuckets_), numBuckets_(initialbuckets_) {}
 
   void insert(const K& key, const V& value) {
-    size_t index = hash(key) % numBuckets;
-    LinkedList<HashNode<K, V>>& bucket = buckets[index];
+    size_t index = hash(key) % numBuckets_;
+    LinkedList<HashNode<K, V>>& bucket = buckets_[index];
 
     for (auto& node : bucket) {
       if (node.key == key) {
@@ -31,7 +31,7 @@ public:
     }
 
     bucket.push_back(HashNode<K, V>(key, value));
-
+    numBuckets_++;
   }
 
   // how is this possible for a generic K?
