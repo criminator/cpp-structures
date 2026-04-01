@@ -3,6 +3,7 @@
 #include <cstddef>
 #include <functional>
 #include "HashNode.hpp"
+#include "DynamicArray.hpp"
 #include "LinkedList.hpp"
 
 template<typename K, typename V>
@@ -39,6 +40,10 @@ public:
   // a specialization exists for type K.
   size_t hash(const K& key) const { // implement hash function
     return std::hash<K>{}(key); // returns hash function for builtin types
+  }
+
+  void print() const {
+
   }
 
 };
