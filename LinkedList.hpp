@@ -138,4 +138,7 @@ public:
         }
         std::cout << curr->value << "\n";
     }
+
+    // get head
+    Node<T>* getHead() { return head; }
 };

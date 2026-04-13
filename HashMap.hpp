@@ -43,19 +43,16 @@ public:
     }
 
     void print() const {
-        for (auto& bucket : buckets_) {
-            auto curr = bucket;
-
+        for (size_t i = 0; i < numBuckets_; i++) {
+            LinkedList<HashNode<K, V>>& list = buckets_[i];
+            Node<HashNode<K, V>>* curr = list.getHead();
             while (curr) {
-                std::cout << "[" << curr.key << ": " << curr.value << "]";
-                if (curr.next) {
+                std::cout << "[" << curr->value << "]";
+                if (curr->next) {
                     std::cout << " --> ";
-                } else {
-                    std::cout << "\n";
                 }
-                curr = curr.next;
             }
+            std::cout << "\n";
         }
-
     }
 };
